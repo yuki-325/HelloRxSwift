@@ -1,6 +1,8 @@
 import UIKit
 import RxSwift
 
+//MARK: - observar
+
 let observable = Observable.just(1)
 
 // subscribeでeventをprint
@@ -26,6 +28,8 @@ let observable3 = Observable.of([1, 2, 3])
 // 配列の中の個々の要素ごとにオブザーバブルを作成している
 let observable4 = Observable.from([1, 2, 3, 4, 5])
 
+//MARK: - subscription
+
 observable4.subscribe { event in
     // 要素値のみを出力
     if let element = event.element {
@@ -43,3 +47,5 @@ observable3.subscribe { event in
 observable4.subscribe(onNext: { element in
     print(element)
 })
+
+
