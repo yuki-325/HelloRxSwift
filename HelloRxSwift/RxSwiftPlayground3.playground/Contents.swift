@@ -35,3 +35,27 @@ subject2.subscribe { event in
 }
 
 subject2.onNext("A")
+
+
+//MARK: -  ReplaySubject
+
+//bufferSizeで最後の2つのイベントを指定
+let subject3 = ReplaySubject<String>.create(bufferSize: 2)
+
+subject3.onNext("1")
+subject3.onNext("2")
+subject3.onNext("3")
+
+subject3.subscribe {
+    print($0)
+}
+
+subject3.onNext("4")
+subject3.onNext("5")
+subject3.onNext("6")
+
+print("[ReplaySubject 2]")
+
+subject3.subscribe {
+    print($0)
+}
